@@ -8,7 +8,9 @@ pipeline{
             }
             post{
                 always{
-                    echo "========Execute Fail on $(date)========"
+                    steps {
+                        sh 'echo "========Execute Simulate Fail on $(date)========"'
+                    }
                 }
                 success{
                     echo "========A executed successfully========"
