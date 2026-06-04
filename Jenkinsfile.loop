@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+        stage("Checkout"){
+            steps{
+                echo "========executing Checkout========"
+                checkout scm
+            }
+        }
+        stage("Run Loop Script"){
+            steps{
+                echo "========executing Loop Script========"
+                sh "python loop.py"
+            }
+            post {
+                success{
+                    echo "========Loop Script executed successfully========"
+                }
+                failure{
+                    echo "========Loop Script execution failed========"
+                }
+            }
+        }
+    }
+}
