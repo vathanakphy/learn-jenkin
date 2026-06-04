@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages{
+        stage("A"){
+            steps{
+                echo "========Let Simulate Fail========"
+                sh "python3 fail.py"
+            }
+            post{
+                always{
+                    echo "========Execute Fail on $(date)========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+    }
+}
