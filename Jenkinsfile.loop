@@ -10,7 +10,7 @@ pipeline{
         stage("Run Loop Script"){
             steps{
                 echo "========executing Loop Script========"
-                sh "python loop.py"
+                sh "python3 loop.py"
             }
             post {
                 success{
